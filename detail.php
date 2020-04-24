@@ -27,19 +27,13 @@ button.mercadopago-button {
 
     // $_clientId = "8196777983571350";
     // $_secretId = "qe5ICWOHsP0dIhCzKwj9i99xS5UH4sGQ";
-
-    // MercadoPago\SDK::setClientId($_clientId);
-    // MercadoPago\SDK::setClientSecret($_secretId);
-
     // $_setPublicKey = "APP_USR-a83913d5-e583-4556-8c19-d2773746b430";
     $_setAccessToken = "APP_USR-6317427424180639-090914-5c508e1b02a34fcce879a999574cf5c9-469485398";
 
+    // MercadoPago\SDK::setClientId($_clientId);
+    // MercadoPago\SDK::setClientSecret($_secretId);
     // MercadoPago\SDK::setPublicKey($_setPublicKey);
     MercadoPago\SDK::setAccessToken($_setAccessToken);
-
-    $preference = new MercadoPago\Preference();
-      
-    # Building an item
 
     $preference->external_reference = "ABCD1234";
 
@@ -49,7 +43,7 @@ button.mercadopago-button {
                                         'default_installments' => 6,    # 6 Cuota
                                         'excluded_payment_types' => [ 
                                             ['id' => 'amex'],         # American Express
-                                            ['id' => 'atm'],            # tampoco deposito
+                                            ['id' => 'atm']           # tampoco deposito
                                         ]
                                     ];
 
@@ -86,6 +80,7 @@ button.mercadopago-button {
         "street_number" => 123,
         "zip_code" => "1111"
     );
+
     # Return the HTML code for button
     $preference->back_urls = array(
                     "success" => "https://integracion-mp.herokuapp.com/success.php",
@@ -97,6 +92,7 @@ button.mercadopago-button {
     $preference->payer = $payer;
 
     $preference->save(); # Save the preference and send the HTTP Request to create
+    
     ?>
 
     <div class="wrap">
@@ -109,7 +105,7 @@ button.mercadopago-button {
                 <h4> <?php echo $_GET['title'] ?> </h4>
                 <h4>Cantidad: <?php echo $_GET['unit'] ?></h4>
                 <h4>Precio: $ <?php echo $_GET['price'] ?></h4>
-                <form action="https://integracion-mp.herokuapp.com/detail.php" method="POST">
+                <form action="/procesar-pago" method="POST">
                   <script
                    src="https://www.mercadopago.com.ar/integrations/v1/web-payment-checkout.js"
                    data-preference-id="<?php echo $preference->id; ?>" data-button-label="Pagar la compra" data-elements-color="#2D3277" >

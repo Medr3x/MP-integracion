@@ -19,7 +19,7 @@
 <div class="wrap">
 	<center><h1>Tienda e-commerce</h1></center>
     <center style="margin-top:50px"><h1>El pago ha sido<b style="color: green"> Exitoso!</b></h1></center>
-        <?php print_r($_REQUEST); ?>
+        <?php $_GET[''] ?>
     <center>
         
     </center>
