@@ -1,77 +1,3 @@
-<?php
-    // SDK de Mercado Pago
-    require __DIR__ .  '/vendor/autoload.php';
-
-    // $_clientId = "8196777983571350";
-    // $_secretId = "qe5ICWOHsP0dIhCzKwj9i99xS5UH4sGQ";
-    // $_setPublicKey = "APP_USR-a83913d5-e583-4556-8c19-d2773746b430";
-    $_setAccessToken = "APP_USR-6317427424180639-090914-5c508e1b02a34fcce879a999574cf5c9-469485398";
-
-    // MercadoPago\SDK::setClientId($_clientId);
-    // MercadoPago\SDK::setClientSecret($_secretId);
-    // MercadoPago\SDK::setPublicKey($_setPublicKey);
-    MercadoPago\SDK::setAccessToken($_setAccessToken);
-
-    // Crea un objeto de preferencia
-    $preference = new MercadoPago\Preference();
-
-    $preference->external_reference = "ABCD1234";
-
-    $preference->notification_url = "https://integracion-mp.herokuapp.com/notification_ipn.php";
-
-    $payer = new MercadoPago\Payer();
-    $payer->name = "Lalo";
-    $payer->surname = "Landa";
-    $payer->email = "test_user_63274575@testuser.com";
-    $payer->phone = array(
-        "area_code" => "011",
-        "number" => "22223333"
-    );
-    
-    $payer->identification = array(
-        "type" => "DNI",
-        "number" => "22333444"
-    );
-    
-    $payer->address = array(
-        "street_name" => "Falsa",
-        "street_number" => 123,
-        "zip_code" => "1111"
-    );
-
-    $preference->payer = $payer;
-
-    $preference->back_urls = array(
-        "success" => "https://integracion-mp.herokuapp.com/success.php",
-        "failure" => "https://integracion-mp.herokuapp.com/failure.php",
-        "pending" => "https://integracion-mp.herokuapp.com/pending.php"
-    );
-
-    $preference->auto_return = "approved";
-
-    $preference->payment_methods = array(
-        "excluded_payment_methods" => array(
-            array("id" => "amex")
-        ),
-        "excluded_payment_types" => array(
-            array("id" => "atm")
-        ),
-        "installments" => 6
-    );
-
-    // Crea un ítem en la preferencia
-    $item = new MercadoPago\Item();
-    $item->id          = 1234;
-    $item->title       = $_POST['title'];
-    $item->quantity    = $_POST['unit'];
-    $item->unit_price  = $_POST['price'];
-    $item->picture_url = 'https://integracion-mp.herokuapp.com' . trim($_POST['img'], '.');
-    $item->description = "Dispositivo móvil de Tienda e-commerce";
-    $preference->items = array($item);
-
-    $preference->save();
-?>
-
 <!DOCTYPE html>
 <html class="supports-animation supports-columns svg no-touch no-ie no-oldie no-ios supports-backdrop-filter as-mouseuser" lang="en-US"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     
@@ -121,7 +47,84 @@
 
 
 <body class="as-theme-light-heroimage">
+<?php
+    // SDK de Mercado Pago
+    require __DIR__ .  '/vendor/autoload.php';
 
+    // $_clientId = "8196777983571350";
+    // $_secretId = "qe5ICWOHsP0dIhCzKwj9i99xS5UH4sGQ";
+    // $_setPublicKey = "APP_USR-a83913d5-e583-4556-8c19-d2773746b430";
+    
+    // $_setAccessToken = "APP_USR-6317427424180639-090914-5c508e1b02a34fcce879a999574cf5c9-469485398";
+    $_setAccessToken = "TEST-144108273911882-042419-98bdb3e4964e4ff0e96105d428ccc4ef-469485398";
+
+    // MercadoPago\SDK::setClientId($_clientId);
+    // MercadoPago\SDK::setClientSecret($_secretId);
+    // MercadoPago\SDK::setPublicKey($_setPublicKey);
+    MercadoPago\SDK::setAccessToken($_setAccessToken);
+
+    // Crea un objeto de preferencia
+    $preference = new MercadoPago\Preference();
+
+    $payer = new MercadoPago\Payer();
+    $payer->name = "Lalo";
+    $payer->surname = "Landa";
+    $payer->email = "test_user_63274575@testuser.com";
+    $payer->phone = array(
+        "area_code" => "011",
+        "number" => "22223333"
+    );
+    
+    $payer->identification = array(
+        "type" => "DNI",
+        "number" => "22333444"
+    );
+    
+    $payer->address = array(
+        "street_name" => "Falsa",
+        "street_number" => 123,
+        "zip_code" => "1111"
+    );
+
+    $preference->payer = $payer;
+
+    $preference->back_urls = array(
+        "success" => "https://integracion-mp.herokuapp.com/success.php",
+        "failure" => "https://integracion-mp.herokuapp.com/failure.php",
+        "pending" => "https://integracion-mp.herokuapp.com/pending.php"
+    );
+
+    $preference->external_reference = "ABCD1234";
+
+    $preference->notification_url = "https://integracion-mp.herokuapp.com/notification_ipn.php";
+
+    $preference->auto_return = "approved";
+
+    $preference->payment_methods = array(
+        "excluded_payment_methods" => array(
+            array("id" => "amex")
+        ),
+        "excluded_payment_types" => array(
+            array("id" => "atm")
+        ),
+        "installments" => 6
+    );
+
+    // Crea un ítem en la preferencia
+    $item = new MercadoPago\Item();
+    $item->id          = 1234;
+    $item->title       = $_POST['title'];
+    $item->description = "Dispositivo móvil de Tienda e-commerce";
+    $item->picture_url = 'https://integracion-mp.herokuapp.com' . trim($_POST['img'], '.');
+    $item->quantity    = $_POST['unit'];
+    $item->unit_price  = $_POST['price'];
+
+    $preference->items = array($item);
+
+    $preference->save();
+
+    // var_dump($preference->id);
+?>
     <div class="stack">
         
         <div class="as-search-wrapper" role="main">
@@ -131,7 +134,7 @@
                         <div class="pd-billboard pd-category-header">
                             <div class="pd-l-plate-scale">
                                 <div class="pd-billboard-background">
-                                    <img src="./assets/music-audio-alp-201709" alt="" width="1440" height="320" data-scale-params-2="wid=2880&amp;hei=640&amp;fmt=jpeg&amp;qlt=95&amp;op_usm=0.5,0.5&amp;.v=1503948581306" class="pd-billboard-hero ir">
+                                    <!-- <img src="./assets/music-audio-alp-201709" alt="" width="1440" height="320" data-scale-params-2="wid=2880&amp;hei=640&amp;fmt=jpeg&amp;qlt=95&amp;op_usm=0.5,0.5&amp;.v=1503948581306" class="pd-billboard-hero ir"> -->
                                 </div>
                                 <div class="pd-billboard-info">
                                     <h1 class="pd-billboard-header pd-util-compact-small-18">Tienda e-commerce</h1>

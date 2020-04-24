@@ -25,4 +25,6 @@
 <?php
     exit;
 }
+
+
 redirect_post($_POST["back_url"], $_POST);
