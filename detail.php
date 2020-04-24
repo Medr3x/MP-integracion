@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/6.0.0/normalize.min.css">
-    <link rel="stylesheet" href="./assets/style.css">
+    <link rel="stylesheet" href="https://integracion-mp.herokuapp.com/assets/style.css">
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
@@ -109,7 +109,7 @@ button.mercadopago-button {
                 <h4> <?php echo $_GET['title'] ?> </h4>
                 <h4>Cantidad: <?php echo $_GET['unit'] ?></h4>
                 <h4>Precio: $ <?php echo $_GET['price'] ?></h4>
-                <form action="/detail.php" method="POST">
+                <form action="https://integracion-mp.herokuapp.com/detail.php" method="POST">
                   <script
                    src="https://www.mercadopago.com.ar/integrations/v1/web-payment-checkout.js"
                    data-preference-id="<?php echo $preference->id; ?>" data-button-label="Pagar la compra" data-elements-color="#2D3277" >
