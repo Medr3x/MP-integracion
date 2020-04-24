@@ -1,7 +1,4 @@
-<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-<!------ Include the above in your HEAD tag ---------->
+
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -14,6 +11,10 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
     <title>Tienda e-commerce</title>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
 </head>
 <style type="text/css">
 button.mercadopago-button {
@@ -104,17 +105,14 @@ button.mercadopago-button {
             <div class="col-sm-3">
             <img src="<?php echo $_GET['img'] ?>" class="img-item" style="width: 200px;height: 260px; margin-top: 30px;"></img>
             </div>
-            <div class="col-sm-9" style="margin-top: 50px">
+            <div class="col-sm-9" style="margin-top: 50px; padding-left: 50px">
                 <h4> <?php echo $_GET['title'] ?> </h4>
                 <h4>Cantidad: <?php echo $_GET['unit'] ?></h4>
                 <h4>Precio: $ <?php echo $_GET['price'] ?></h4>
-                <!-- <a href="<?php echo $preference->init_point; ?>">Pagar con Mercado Pago</a> -->
                 <form action="/detail.php" method="POST">
-
                   <script
                    src="https://www.mercadopago.com.ar/integrations/v1/web-payment-checkout.js"
                    data-preference-id="<?php echo $preference->id; ?>" data-button-label="Pagar la compra" data-elements-color="#2D3277" >
-
                   </script>
                 </form>
             </div>
