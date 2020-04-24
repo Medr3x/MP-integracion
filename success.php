@@ -27,10 +27,10 @@ $monto = $json_response->transaction_amount;
 	<center><h1>Tienda e-commerce</h1></center>
     <center style="margin-top:50px">
       <h1>El pago ah sido realizado con <b style="color:orange"></b>Exito!</h1>
-	  <p>ID de MercadoPago: <?php $payment_id ?> </p>
-	  <p>Número de órden: <?php $pedido_id ?> </p>
-	  <p>Payment method id:<?php $payment_method_id ?> </p>
-	  <p>Monto:<?php $monto ?></p>
+	  <p>ID de MercadoPago: <?= $payment_id ?> </p>
+	  <p>Número de órden: <?= $pedido_id ?> </p>
+	  <p>Payment method id:<?= $payment_method_id ?> </p>
+	  <p>Monto:<?= $monto ?></p>
 	  <a class="btn btn-info" href="https://integracion-mp.herokuapp.com">Inicio</a>
 	</center>
   	<!-- <p></p> -->
