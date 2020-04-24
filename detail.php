@@ -55,8 +55,8 @@
     // $_secretId = "qe5ICWOHsP0dIhCzKwj9i99xS5UH4sGQ";
     // $_setPublicKey = "APP_USR-a83913d5-e583-4556-8c19-d2773746b430";
     
-    // $_setAccessToken = "APP_USR-6317427424180639-090914-5c508e1b02a34fcce879a999574cf5c9-469485398";
-    $_setAccessToken = "TEST-144108273911882-042419-98bdb3e4964e4ff0e96105d428ccc4ef-469485398";
+    $_setAccessToken = "APP_USR-6317427424180639-090914-5c508e1b02a34fcce879a999574cf5c9-469485398";
+    // $_setAccessToken = "TEST-144108273911882-042419-98bdb3e4964e4ff0e96105d428ccc4ef-469485398";
 
     // MercadoPago\SDK::setClientId($_clientId);
     // MercadoPago\SDK::setClientSecret($_secretId);
